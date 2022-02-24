@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           http://www.springframework.org/schema/beans/spring-beans.xsd
+                           http://www.springframework.org/schema/context
+                           http://www.springframework.org/schema/context/spring-context.xsd
+                           http://www.springframework.org/schema/tx  http://www.springframework.org/schema/tx/spring-tx.xsd">
+
+
+	<bean id="conn"	class="com.hudl.application.test.automation.beans.ConfigBeans">
+		<property name="hudlLoginUrl" value = "${hudlLoginUrl}"></property>
+		<property name="hudlLoginUsernameField" value="//*[@id='email']"></property>
+		<property name="hudlLoginPasswordField" value="//*[@id='password']"></property>
+		<property name="hudlUsername" value="${hudlUsername}"></property>
+		<property name="hudlPassword" value="${hudlPassword}"></property>
+		<property name="hudlSignInButton" value="//*[@id='logIn']"></property>
+		<property name="hudlProjectName" value = "//*[@id='ssr-webnav']/div/div[1]/nav[2]/div[2]/a/div[2]/span"></property>
+		<property name="hudlMouseHoverLoggedInUser" value = "/html/body/div[2]/div/div[1]/nav[1]/div[4]/div[2]/div[1]"></property>
+		<property name="hudlLogOutButton" value ="/html/body/div[2]/div/div[1]/nav[1]/div[4]/div[2]/div[2]/div[3]/a/span"></property>			
+	</bean>
+	
+	<bean id ="sndHghlgts" class ="com.hudl.application.test.automation.beans.SendLatestHighlightsToCoachesConfigBeans">
+		<property name="clickHighlightsTab" value="//body/div[@id='ssr-webnav']/div[1]/div[1]/nav[2]/div[3]/a[3]"></property>
+		<property name="filterByNewestOption" value="/html/body/div[3]/div/div/div[2]/div/div/div[2]/div[3]/main/div[1]/div[1]/div[1]/div[2]"></property>
+		<property name="clickShareButton" value="/html/body/div[3]/div/div/div[2]/div/div/div[2]/div[3]/main/div[2]/div/div/div[2]/button[1]"></property>
+		<property name="clickCopyUrlLink" value="/html/body/div[3]/div/div/div[2]/span/div/div/div/div[2]/div/button"></property>
+		<property name="closeShareHighlightDialogBox" value="/html/body/div[3]/div/div/div[2]/span/div/div/header/div"></property>
+		<property name="clickSendMessageIcon" value="//body/div[@id='main']/div[@id='app']/div[1]/div[1]/div[1]/nav[1]/div[4]/a[2]"></property>
+		<property name="clickSendANewMessageButton" value="//button[contains(text(),'Send a New Message')]"></property>
+		<property name="enterMessage" value="//body[1]/div[2]/div[1]/div[2]/div[3]/div[1]/div[1]/div[2]/div[1]/textarea[1]"></property>
+		<property name="enterToDetails" value="//body/div[@id='MessagingApp']/div[1]/div[2]/div[3]/div[1]/div[1]/div[1]/div[1]/div[2]/input[1]"></property>
+		<property name="selectRecipientsFromList" value="//span[contains(text(),'Test Coac')]"></property>
+		<property name="clickSendButton" value="//button[contains(text(),'Send')][@class='uni-btn--primary uni-btn--medium']"></property>
+		<property name="clickLastSentMessageButton" value="//div[contains(text(),'Sent')][@class='msg-message-footer-receipts uni-btn--subtle--minimal uni-btn--small']"></property>
+		<property name="getTextAfterMessageBeenSent" value="//div[contains(text(),'Message from You')]"></property>
+		<property name="getNotifiedUserCount" value="//span[contains(text(),'Notified')][1]"></property>
+		<property name="getNotNotifiedUserCount" value="//span[contains(text(),'Notified')][2]"></property>	
+	</bean>
+
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location">
+			<value>test.properties</value>
+		</property>
+	</bean>
+
+</beans>
